@@ -14,10 +14,11 @@ cube = cube[::20, ::20]
 fig = plt.figure(figsize=(16,12))
 ax = plt.axes(projection=ccrs.Mercator())
 
-iplt.pcolormesh(cube, edgecolor='grey')
+iplt.pcolormesh(cube, edgecolor='grey', linewidth=1)
 
 ax.coastlines(resolution='50m')
+ax.outline_patch.set_edgecolor('none')
 ax.set_extent((-16.91, 8.05, 46.29, 61.35), crs=ccrs.PlateCarree())
 
-#plt.savefig('ukv.png', transparent=True, dpi=200)
+plt.savefig('ukv.png', transparent=True, dpi=200)
 plt.show()
