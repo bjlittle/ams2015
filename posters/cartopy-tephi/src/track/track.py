@@ -1,5 +1,6 @@
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
+import numpy as np
 import shapely.geometry as sgeom
 
 import cartopy.crs as ccrs
@@ -31,7 +32,8 @@ def sample_data():
 
 
 fig = plt.figure(figsize=(16, 12))
-ax = plt.axes(projection=ccrs.LambertConformal())
+lambert = ccrs.LambertConformal()
+ax = plt.axes(projection=lambert)
 
 ax.background_patch.set_visible(False)
 ax.outline_patch.set_visible(False)
@@ -72,8 +74,13 @@ for road in cshp.Reader(fname).geometries():
         
 ax.add_geometries([track], ccrs.PlateCarree(), facecolor='none', edgecolor='blue', linewidth=2)
 
-x, y = [-85.8, -85.8, -76.25, -76.25, -85.8], [23.14, 29.35, 29.35, 23.14, 23.14]
-ax.plot(x, y, transform=ccrs.PlateCarree(), color='black')
+lons = np.array([-85.8, -85.8, -76.25, -76.25, -85.8])
+lats = np.array([23.14, 29.35, 29.35, 23.14, 23.14])
+xy = lambert.transform_points(ccrs.Geodetic(), lons, lats)
+xs, ys = list(xy[:, 0]), list(xy[:, 1])
+x = [xs[0], xs[0], xs[2], xs[2], xs[0]]
+y = [ys[0], ys[2], ys[2], ys[0], ys[0]]
+ax.plot(x, y, transform=lambert, color='black')
 
 plt.title('U.S. transportation routes which intersect the track '
           'of Hurricane Katrina (2005)')

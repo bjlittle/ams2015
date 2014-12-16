@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 import shapely.geometry as sgeom
 
 import cartopy.crs as ccrs
@@ -30,7 +31,8 @@ def sample_data():
 
 
 fig = plt.figure(figsize=(16, 12))
-ax = plt.axes(projection=ccrs.LambertConformal())
+lambert = ccrs.LambertConformal()
+ax = plt.axes(projection=lambert)
 
 ax.background_patch.set_visible(False)
 ax.outline_patch.set_visible(False)
@@ -47,7 +49,12 @@ roads = cfeat.NaturalEarthFeature(category='cultural',
 ax.add_feature(roads)
 
 inset = (-85.8, -76.25, 23.14, 29.35)
-ax.set_extent(inset, crs=ccrs.Geodetic())
+#ax.set_extent(inset, crs=ccrs.Geodetic())
+lons = np.array([-85.8, -76.25])
+lats = np.array([23.14, 29.35])
+xy = lambert.transform_points(ccrs.Geodetic(), lons, lats) 
+extent = list(xy[:, 0]) + list(xy[:, 1])
+ax.set_extent(extent, crs=lambert)
 ax.coastlines('10m', color='grey')
 
 lons, lats = sample_data()
