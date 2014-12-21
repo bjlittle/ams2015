@@ -17,3 +17,5 @@ Session #3 @ 16h00-16h15
 Room 129B
 
 Biggus: Making "biggis" dense data easy to use
+
+See https://github.com/SciTools and http://scitools.org.uk
