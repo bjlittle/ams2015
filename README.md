@@ -1,11 +1,11 @@
 AMS 2015
 ========
 
-Jan 4-8, Phoenix Convention Centre - West and North Buildings.
+Jan 4-8, Phoenix Convention Centre - West and North Buildings, Phoenix, AZ.
 
 Posters
 -------
-Poster session 1 @ 14h40-16h00
+Poster session 1 @ 14h30-16h00
 Hall 4
 
 + Cartopy and Tephi: Open source  Python packages for visualising geospatial and thermodynamic data (Poster #404)
