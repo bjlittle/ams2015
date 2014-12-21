@@ -1,7 +1,7 @@
 AMS 2015
 ========
 
-Jan 4-8, Phoenix Convention Centre - West and North Buildings, Phoenix, AZ.
+Jan 4-8, Phoenix Convention Center - West and North Buildings, Phoenix, AZ.
 
 Posters
 -------
